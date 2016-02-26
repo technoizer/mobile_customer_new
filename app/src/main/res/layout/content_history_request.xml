@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="#ccc"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="id.ac.its.alpro.customer.RequestBelumBayarActivity"
-    tools:showIn="@layout/activity_request_belum_bayar">
+    tools:context="id.ac.its.alpro.customer.HistoryRequestActivity"
+    tools:showIn="@layout/activity_history_request">
 
     <ListView
         android:id="@+id/fragmenList"
@@ -25,5 +25,5 @@
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tidak Ada Request Baru."/>
+        android:text="Tidak Ada Data"/>
 </RelativeLayout>
