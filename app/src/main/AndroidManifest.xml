@@ -25,6 +25,10 @@
         <activity
             android:name=".RequestBerlangsungActivity"
             android:label="@string/title_activity_request_berlangsung"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RequestBelumBayarActivity"
+            android:label="@string/title_activity_request_belum_bayar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
