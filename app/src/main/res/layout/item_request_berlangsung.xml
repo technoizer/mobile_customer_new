@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:background="@drawable/cards_bg"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="10dp">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/container_atas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Nama pelanggan"
+            android:textStyle="bold"
+            android:id="@+id/nama_pelanggan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Jenis Service"
+            android:id="@+id/jenis_service" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Feb, 15 at 9:09pm"
+            android:id="@+id/tanggal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container_atas"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/detailButton"
+                android:src="@drawable/detail"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:onClick="seeDetail"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Detail"
+                android:textSize="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/callButton"
+                android:src="@drawable/phone"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:onClick="callCustomer"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:textSize="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/reportButton"
+                android:src="@drawable/notebook"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:onClick="makeReport"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:textSize="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
