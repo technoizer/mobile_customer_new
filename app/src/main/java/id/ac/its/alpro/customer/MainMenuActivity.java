@@ -66,4 +66,21 @@ public class MainMenuActivity extends AppCompatActivity {
 //        startActivity(i);
     }
 
+    public void ongoingRequest(View view) {
+        Intent i = new Intent(getApplicationContext(),RequestBerlangsungActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
+
+    public void unpaidRequest(View view) {
+        Intent i = new Intent(getApplicationContext(),RequestBelumBayarActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
+
+    public void historyRequest(View view) {
+        Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
 }

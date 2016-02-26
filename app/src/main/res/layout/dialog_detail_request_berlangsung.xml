@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="Jenis Service"
+                    style="@style/Base.TextAppearance.AppCompat.Title"
+                    android:id="@+id/jenis_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="nama_peneyedia_jasa"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:id="@+id/nama_penyedia_jasa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="Lokasi : Jln. Jend. Soedirman"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:id="@+id/lokasi_servis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="2016-02-16 at 21:32"
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:id="@+id/jam_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="Harga : 80.000"
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:id="@+id/harga_perkiraan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:text="Deskripsi :"
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="asdasdasdasd\nqweqweqweqweq\n123123"
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:id="@+id/catatan_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </ScrollView>
+
+
+</LinearLayout>

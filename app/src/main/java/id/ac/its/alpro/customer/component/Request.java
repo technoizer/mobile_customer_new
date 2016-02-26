@@ -7,10 +7,10 @@ import java.io.Serializable;
  */
 public class Request implements Serializable {
 
-    private String tanggalrequest, namacustomer, nohp, lokasi, tipejasa, catatancustomer, lat, lng, urlAmbil, jamservis, catatanPenyediaJasa , tanggalselesai;
+    private String tanggalrequest, namacustomer, nohp, lokasi, tipejasa, catatancustomer, lat, lng, urlAmbil, jamservis, catatanpenyediajasa, tanggalselesai, namapenyediajasa;
     private Integer broadcast_id,direct_id, hargaperkiraan, hargatotal, transaksi_id;
 
-    public Request(String tanggalrequest, String namacustomer, String nohp, String lokasi, String tipejasa, String catatancustomer, String lat, String lng, String urlAmbil, String jamservis, String catatanPenyediaJasa, String tanggalselesai, Integer broadcast_id, Integer direct_id, Integer hargaperkiraan, Integer hargatotal, Integer transaksi_id) {
+    public Request(String tanggalrequest, String namacustomer, String nohp, String lokasi, String tipejasa, String catatancustomer, String lat, String lng, String urlAmbil, String jamservis, String catatanpenyediajasa, String tanggalselesai, String namapenyediajasa, Integer broadcast_id, Integer direct_id, Integer hargaperkiraan, Integer hargatotal, Integer transaksi_id) {
         this.tanggalrequest = tanggalrequest;
         this.namacustomer = namacustomer;
         this.nohp = nohp;
@@ -21,8 +21,9 @@ public class Request implements Serializable {
         this.lng = lng;
         this.urlAmbil = urlAmbil;
         this.jamservis = jamservis;
-        this.catatanPenyediaJasa = catatanPenyediaJasa;
+        this.catatanpenyediajasa = catatanpenyediajasa;
         this.tanggalselesai = tanggalselesai;
+        this.namapenyediajasa = namapenyediajasa;
         this.broadcast_id = broadcast_id;
         this.direct_id = direct_id;
         this.hargaperkiraan = hargaperkiraan;
@@ -110,12 +111,12 @@ public class Request implements Serializable {
         this.jamservis = jamservis;
     }
 
-    public String getCatatanPenyediaJasa() {
-        return catatanPenyediaJasa;
+    public String getCatatanpenyediajasa() {
+        return catatanpenyediajasa;
     }
 
-    public void setCatatanPenyediaJasa(String catatanPenyediaJasa) {
-        this.catatanPenyediaJasa = catatanPenyediaJasa;
+    public void setCatatanpenyediajasa(String catatanpenyediajasa) {
+        this.catatanpenyediajasa = catatanpenyediajasa;
     }
 
     public String getTanggalselesai() {
@@ -124,6 +125,14 @@ public class Request implements Serializable {
 
     public void setTanggalselesai(String tanggalselesai) {
         this.tanggalselesai = tanggalselesai;
+    }
+
+    public String getNamapenyediajasa() {
+        return namapenyediajasa;
+    }
+
+    public void setNamapenyediajasa(String namapenyediajasa) {
+        this.namapenyediajasa = namapenyediajasa;
     }
 
     public Integer getBroadcast_id() {
