@@ -22,6 +22,18 @@
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RequestBerlangsungActivity"
+            android:label="@string/title_activity_request_berlangsung"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RequestBelumBayarActivity"
+            android:label="@string/title_activity_request_belum_bayar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
