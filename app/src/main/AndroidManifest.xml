@@ -33,6 +33,10 @@
         <activity
             android:name=".HistoryRequestActivity"
             android:label="@string/title_activity_history_request"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EcashWalletActivity"
+            android:label="@string/title_activity_ecash_wallet"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
