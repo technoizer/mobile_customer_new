@@ -146,7 +146,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:src="@drawable/finished"
-                    android:onClick="cekPembayaran"/>
+                    android:onClick="ecashMandiri"/>
                 <TextView
                     android:layout_gravity="center"
                     android:textStyle="bold"

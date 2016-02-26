@@ -3,7 +3,6 @@
     android:padding="16dp"
     android:background="@drawable/cards_bg"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent">
 
     <LinearLayout
@@ -18,35 +17,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Jenis Service"
-            android:id="@+id/jenis_service"
+            android:text="Kirim e-cash"
+            android:id="@+id/jenis_transaksi"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Feb, 15 at 9:09pm"
-            android:id="@+id/tanggal_request"/>
+            android:text="Rani"
+            android:id="@+id/nama"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Feb, 15 at 9:09pm"
-            android:id="@+id/tanggal_selesai"/>
+            android:id="@+id/tanggal"/>
 
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="80.000"
-            android:textSize="25sp"/>
+            android:textSize="20sp"/>
     </RelativeLayout>
 </RelativeLayout>

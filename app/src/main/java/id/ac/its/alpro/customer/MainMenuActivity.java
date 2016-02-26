@@ -48,24 +48,6 @@ public class MainMenuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void requestBaru(View view) {
-//        Intent i = new Intent(getApplicationContext(),NewRequestActivity.class);
-//        i.putExtra("Auth", auth);
-//        startActivity(i);
-    }
-
-    public void requestDiterima(View view) {
-//        Intent i = new Intent(getApplicationContext(),RequestDiterimaActivity.class);
-//        i.putExtra("Auth", auth);
-//        startActivity(i);
-    }
-
-    public void cekPembayaran(View view) {
-//        Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
-//        i.putExtra("Auth", auth);
-//        startActivity(i);
-    }
-
     public void ongoingRequest(View view) {
         Intent i = new Intent(getApplicationContext(),RequestBerlangsungActivity.class);
         i.putExtra("Auth", auth);
@@ -80,6 +62,12 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void historyRequest(View view) {
         Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
+
+    public void ecashMandiri(View view) {
+        Intent i = new Intent(getApplicationContext(),EcashWalletActivity.class);
         i.putExtra("Auth", auth);
         startActivity(i);
     }

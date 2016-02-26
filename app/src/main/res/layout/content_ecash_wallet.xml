@@ -10,10 +10,13 @@
     tools:context="id.ac.its.alpro.customer.EcashWalletActivity"
     tools:showIn="@layout/activity_ecash_wallet">
     <TextView
-        android:layout_marginTop="8dp"
+        android:background="@drawable/cards_bg"
+        android:id="@+id/balance"
+        android:padding="8dp"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="800.000"
+        android:text="Rp ,00"
         android:textAlignment="center"
         android:textSize="35sp"/>
 
@@ -23,7 +26,6 @@
         <ListView
             android:id="@+id/fragmenList"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="64dp"
             android:layout_width="match_parent"
