@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button login;
     EditText email;
+    TextView signup;
     EditText password;
     TextInputLayout email_l, password_l;
     MySQLiteHelper db;
@@ -56,8 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         db = new MySQLiteHelper(getApplicationContext());
-
+        signup = (TextView)findViewById(R.id.signupBtn);
         login = (Button)findViewById(R.id.login);
+
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
         email_l = (TextInputLayout)findViewById(R.id.layout_email);
@@ -74,9 +77,17 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateEmail() && validatePassword()){
+                if (validateEmail() && validatePassword()) {
                     new MyAsyncTask().execute("hehe");
                 }
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
+                startActivity(i);
             }
         });
     }
