@@ -18,6 +18,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 
 import id.ac.its.alpro.customer.LoginActivity;
+import id.ac.its.alpro.customer.component.Auth;
+import id.ac.its.alpro.customer.databaseHandler.MySQLiteHelper;
 
 
 /**
