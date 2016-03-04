@@ -41,7 +41,7 @@
                     android:layout_gravity="center"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/new_notif"
+                    android:src="@drawable/new_request"
                     android:onClick="requestBaru"/>
                 <TextView
                     android:textStyle="bold"
@@ -62,8 +62,8 @@
                     android:layout_marginRight="32dp"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/received"
-                    android:onClick="requestDiterima"/>
+                    android:src="@drawable/recent_req"
+                    android:onClick="recentRequest"/>
                 <TextView
                     android:layout_gravity="center"
                     android:textStyle="bold"
@@ -80,7 +80,7 @@
                     android:layout_gravity="center"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/finished"
+                    android:src="@drawable/ongoing_request_2"
                     android:onClick="ongoingRequest"/>
                 <TextView
                     android:layout_gravity="center"
@@ -106,7 +106,7 @@
                     android:layout_gravity="center"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/new_notif"
+                    android:src="@drawable/unpaid"
                     android:onClick="unpaidRequest"/>
                 <TextView
                     android:textStyle="bold"
@@ -127,7 +127,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/received"
+                    android:src="@drawable/history"
                     android:onClick="historyRequest"/>
                 <TextView
                     android:layout_gravity="center"
@@ -145,7 +145,7 @@
                     android:layout_gravity="center"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/finished"
+                    android:src="@drawable/wallet"
                     android:onClick="ecashMandiri"/>
                 <TextView
                     android:layout_gravity="center"

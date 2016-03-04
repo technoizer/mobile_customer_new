@@ -71,4 +71,16 @@ public class MainMenuActivity extends AppCompatActivity {
         i.putExtra("Auth", auth);
         startActivity(i);
     }
+
+    public void requestBaru(View view) {
+        Intent i = new Intent(getApplicationContext(),NewRequestActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
+
+    public void recentRequest(View view) {
+        Intent i = new Intent(getApplicationContext(),RecentRequestActivity.class);
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
 }

@@ -8,4 +8,9 @@
     <string name="title_activity_history_request">HistoryRequestActivity</string>
     <string name="title_activity_ecash__wallet_">Ecash_Wallet_Activity</string>
     <string name="title_activity_ecash_wallet">EcashWalletActivity</string>
+    <string name="title_activity_new_request">NewRequestActivity</string>
+    <string name="title_activity_broadcast">BroadcastActivity</string>
+    <string name="title_activity_recent_request">RecentRequestActivity</string>
+    <string name="title_activity_direct_request">DirectRequestActivity</string>
+    <string name="title_activity_payment">PaymentActivity</string>
 </resources>

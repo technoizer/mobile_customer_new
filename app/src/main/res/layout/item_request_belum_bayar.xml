@@ -127,7 +127,7 @@
                 android:src="@drawable/logo"
                 android:layout_marginBottom="0dp"
                 android:background="@null"
-                android:onClick="payButton"
+                android:onClick="payRequest"
                 />
             <TextView
                 android:layout_width="match_parent"
