@@ -122,7 +122,7 @@ public class EcashWalletActivity extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
+                Intent i = new Intent(getApplicationContext(), id.ac.its.alpro.customer.History.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }

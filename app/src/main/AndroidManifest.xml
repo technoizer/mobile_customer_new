@@ -73,7 +73,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingActivity"
-            android:label="@string/title_activity_setting"
+            android:label="@string/title_activity_setting"/>
+        <activity
+            android:name=".History"
+            android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

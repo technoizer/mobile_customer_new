@@ -16,4 +16,6 @@
     <string name="title_activity_new_broadcast">newBroadcast</string>
     <string name="title_activity_new_direct">NewDirectActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_history">History</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

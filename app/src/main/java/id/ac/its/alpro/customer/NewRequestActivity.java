@@ -52,7 +52,7 @@ public class NewRequestActivity extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
+                Intent i = new Intent(getApplicationContext(),History.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
