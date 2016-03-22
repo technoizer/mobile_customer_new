@@ -3,6 +3,8 @@ package id.ac.its.alpro.customer;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +20,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -92,6 +96,53 @@ public class EcashWalletActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 refreshContent();
+            }
+        });
+
+
+        /*Method Footer*/
+        ImageView btn;
+        LinearLayout order, history, ecash, setting;
+        order = (LinearLayout) findViewById(R.id.orderBtn);
+        history = (LinearLayout) findViewById(R.id.historyBtn);
+        ecash = (LinearLayout) findViewById(R.id.ecashBtn);
+        setting = (LinearLayout) findViewById(R.id.settingBtn);
+        btn = (ImageView) findViewById(R.id.ecashImg);
+        btn.setColorFilter(Color.argb(255, 244, 67, 54));
+
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),NewRequestActivity.class);
+                i.putExtra("Auth", auth);
+                startActivity(i);
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),HistoryRequestActivity.class);
+                i.putExtra("Auth", auth);
+                startActivity(i);
+            }
+        });
+
+//        ecash.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(),EcashWalletActivity.class);
+//                i.putExtra("Auth", auth);
+//                startActivity(i);
+//            }
+//        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),RequestBelumBayarActivity.class);
+                i.putExtra("Auth", auth);
+                startActivity(i);
             }
         });
     }

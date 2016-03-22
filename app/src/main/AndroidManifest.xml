@@ -60,7 +60,7 @@
             android:label="@string/title_activity_direct_request"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".databaseHandler.PaymentActivity"
+            android:name=".PaymentActivity"
             android:label="@string/title_activity_payment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

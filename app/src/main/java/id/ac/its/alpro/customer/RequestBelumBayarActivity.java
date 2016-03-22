@@ -3,47 +3,35 @@ package id.ac.its.alpro.customer;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -51,15 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import id.ac.its.alpro.customer.adaptor.EcashListAdaptor;
 import id.ac.its.alpro.customer.adaptor.RequestBelumBayarListAdaptor;
-import id.ac.its.alpro.customer.adaptor.RequestBerlangsungListAdaptor;
 import id.ac.its.alpro.customer.asynctask.AsyncTaskLogout;
 import id.ac.its.alpro.customer.component.Auth;
-import id.ac.its.alpro.customer.component.Mandiri;
 import id.ac.its.alpro.customer.component.Request;
-import id.ac.its.alpro.customer.databaseHandler.MandiriECashDb;
-import id.ac.its.alpro.customer.databaseHandler.PaymentActivity;
 
 public class RequestBelumBayarActivity extends AppCompatActivity {
     private static List<Request> requestBelumBayar = new ArrayList<>();

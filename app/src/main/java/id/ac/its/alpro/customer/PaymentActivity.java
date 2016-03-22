@@ -1,4 +1,4 @@
-package id.ac.its.alpro.customer.databaseHandler;
+package id.ac.its.alpro.customer;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
