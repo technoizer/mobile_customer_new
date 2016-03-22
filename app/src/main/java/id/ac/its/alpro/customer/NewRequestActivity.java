@@ -70,7 +70,7 @@ public class NewRequestActivity extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),RequestBelumBayarActivity.class);
+                Intent i = new Intent(getApplicationContext(),SettingActivity.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
@@ -80,14 +80,15 @@ public class NewRequestActivity extends AppCompatActivity {
     }
 
     public void broadcastRequest(View view) {
-        Intent i = new Intent(getApplicationContext(), BroadcastActivity.class);
+        Intent i = new Intent(getApplicationContext(), newBroadcast.class);
         i.putExtra("Auth", auth);
         startActivity(i);
     }
 
     public void directRequest(View view){
-        Intent i = new Intent(getApplicationContext(), DirectRequestActivity.class);
+        Intent i = new Intent(getApplicationContext(), NewDirectActivity.class);
         i.putExtra("Auth", auth);
         startActivity(i);
     }
+    
 }
