@@ -13,4 +13,6 @@
     <string name="title_activity_recent_request">RecentRequestActivity</string>
     <string name="title_activity_direct_request">DirectRequestActivity</string>
     <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_history">History</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
