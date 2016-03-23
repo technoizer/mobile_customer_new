@@ -71,6 +71,10 @@
             android:name=".UnpaidActivity"
             android:label="@string/title_activity_unpaid"
             android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProviderProfileActivity"
+            android:label="@string/title_activity_provider_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

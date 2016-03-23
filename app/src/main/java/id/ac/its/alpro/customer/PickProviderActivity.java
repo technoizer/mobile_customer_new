@@ -2,6 +2,7 @@ package id.ac.its.alpro.customer;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -68,6 +69,18 @@ public class PickProviderActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         refreshContent();
+
+    }
+
+    public void seeDetailProvider(View view) {
+        Provider provider = (Provider) view.getTag();
+        Intent i = new Intent(getApplicationContext(), ProviderProfileActivity.class);
+        i.putExtra("ID_PENYEDIA",provider.getPenyediajasa_id());
+        i.putExtra("Auth", auth);
+        startActivity(i);
+    }
+
+    public void callProvider(View view) {
 
     }
 
@@ -186,6 +199,7 @@ public class PickProviderActivity extends AppCompatActivity {
         protected void onPostExecute(Double result) {
             Toast.makeText(getApplicationContext(),"Penyedia jasa berhasil dipilh.",Toast.LENGTH_LONG).show();
             dialog.dismiss();
+            finish();
         }
 
         protected void onProgressUpdate(Integer... progress) {

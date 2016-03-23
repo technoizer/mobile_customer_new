@@ -1,6 +1,7 @@
 package id.ac.its.alpro.customer;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -25,6 +29,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -34,7 +40,11 @@ import id.ac.its.alpro.customer.component.Auth;
 import id.ac.its.alpro.customer.component.Request;
 
 public class UnpaidActivity extends AppCompatActivity {
-
+    private String ReviewVal;
+    private Float RatingVal;
+    private Dialog myDialog;
+    EditText Review;
+    RatingBar Rating;
     private String TOKEN;
     private Auth auth;
     private Request item;
@@ -119,7 +129,7 @@ public class UnpaidActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://128.199.115.34:6557/ipg/ticket?amount="+item.getHargatotal()+"&tracenumber=123456&returnurl=http://servisin.au-syd.mybluemix.net/api/customer/request/bayar/"+item.getTransaksi_id()+"/"+TOKEN;
+            String url = "http://128.199.115.34:6557/ipg/ticket?amount="+item.getHargatotal()+"&tracenumber=123456"+item.getTransaksi_id()+"&returnurl=http://servisin.au-syd.mybluemix.net/api/customer/request/bayar/"+item.getTransaksi_id()+"/"+TOKEN+"/"+ReviewVal+"/"+RatingVal;
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
@@ -130,7 +140,7 @@ public class UnpaidActivity extends AppCompatActivity {
                 Res res= baru.fromJson(reader, Res.class);
                 status = res.getStatus();
                 ticket = res.getTicketID();
-                Log.d("STATUS", ticket);
+//                Log.d("STATUS", ticket);
 
             } catch (ClientProtocolException e) {
             } catch (IOException e) {
@@ -188,7 +198,38 @@ public class UnpaidActivity extends AppCompatActivity {
     }
 
     public void payRequest(View view) {
-        new AsyncTaskOTP().execute("hehe");
-    }
 
+        Request tmp = (Request) view.getTag();
+        myDialog = new Dialog(this);
+        myDialog.setTitle("Review Penyedia Jasa");
+        myDialog.setContentView(R.layout.dialog_review);
+        myDialog.setCancelable(false);
+        Review = (EditText) myDialog.findViewById(R.id.review);
+        Rating = (RatingBar) myDialog.findViewById(R.id.ratingBar);
+        Button cancel = (Button) myDialog.findViewById(R.id.cancel);
+        Button pay = (Button) myDialog.findViewById(R.id.pay);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    ReviewVal = URLEncoder.encode(Review.getText().toString().trim(), "UTF-8");
+                    RatingVal = Rating.getRating();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                new AsyncTaskOTP().execute("hehe");
+
+            }
+        });
+
+        myDialog.show();
+    }
 }

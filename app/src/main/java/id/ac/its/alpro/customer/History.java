@@ -283,14 +283,14 @@ public class History extends AppCompatActivity {
 
     public void historyListener(View view) {
         Request request = (Request) view.getTag();
-        if (request.getHargaperkiraan() == null){
+        if (request.getTanggalmulai() == null){
 //            Toast.makeText(getApplicationContext(),"Belum Diambil",Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(),PickProviderActivity.class);
             i.putExtra("Auth", auth);
             i.putExtra("Request", request);
             startActivity(i);
         }
-        else if(request.getHargatotal() == null){
+        else if(request.getTanggalselesai() == null){
             Toast.makeText(getApplicationContext(),"Sedang Dikerjakan",Toast.LENGTH_LONG).show();
         }
         else if(request.getTanggalbayar() == null){
