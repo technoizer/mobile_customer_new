@@ -56,10 +56,10 @@ public class HistoryAdaptor extends ArrayAdapter<Request> {
         String status = "";
         if(section == 1)
         {
-            if (holder.item.getHargaperkiraan() == null){
+            if (holder.item.getTanggalmulai() == null){
                 status = "Belum Diambil";
             }
-            else if(holder.item.getHargatotal() == null){
+            else if(holder.item.getTanggalselesai() == null){
                 status = "Sedang Dikerjakan";
             }
             else if(holder.item.getTanggalbayar() == null){

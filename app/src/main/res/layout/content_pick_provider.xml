@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="id.ac.its.alpro.customer.PickProviderActivity"
+    tools:showIn="@layout/activity_pick_provider">
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/tanggal_servis"
+        android:text="20/02/2016"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:textStyle="bold"
+        android:id="@+id/jenis_servis"
+        android:text="Servis Setan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:id="@+id/lokasi_servis"
+        android:layout_below="@id/jenis_servis"
+        android:text="Lokasi : Jln Kusuma Bangsa, Surabaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/caption_pilih"
+        android:layout_below="@+id/lokasi_servis"
+        android:text="Pilih Penyedia Jasa :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ListView
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/caption_pilih"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

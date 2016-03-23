@@ -7,10 +7,11 @@ import java.io.Serializable;
  */
 public class Request implements Serializable {
 
-    private String tanggalrequest, namacustomer, nohp, lokasi, tipejasa, catatancustomer, lat, lng, urlAmbil, jamservis, catatanpenyediajasa, tanggalselesai, namapenyediajasa, tanggalbayar, review;
-    private Integer broadcast_id,direct_id, hargaperkiraan, hargatotal, transaksi_id, flagtransaksi, rating, tipetransaksi_id;
+    private String tanggalrequest, namacustomer, nohp, lokasi, tipejasa, catatancustomer, lat, lng, urlAmbil, jamservis, catatanpenyediajasa, tanggalselesai, namapenyediajasa, tanggalbayar, review, tanggalmulai;
+    private Integer broadcast_id,direct_id, hargaperkiraan, hargatotal, transaksi_id, flagtransaksi, tipetransaksi_id;
+    private Float rating;
 
-    public Request(String tanggalrequest, String namacustomer, String nohp, String lokasi, String tipejasa, String catatancustomer, String lat, String lng, String urlAmbil, String jamservis, String catatanpenyediajasa, String tanggalselesai, String namapenyediajasa, String tanggalbayar, String review, Integer broadcast_id, Integer direct_id, Integer hargaperkiraan, Integer hargatotal, Integer transaksi_id, Integer flagtransaksi, Integer rating, Integer tipetransaksi_id) {
+    public Request(String tanggalrequest, String namacustomer, String nohp, String lokasi, String tipejasa, String catatancustomer, String lat, String lng, String urlAmbil, String jamservis, String catatanpenyediajasa, String tanggalselesai, String namapenyediajasa, String tanggalbayar, String review, String tanggalmulai, Integer broadcast_id, Integer direct_id, Integer hargaperkiraan, Integer hargatotal, Integer transaksi_id, Integer flagtransaksi, Integer tipetransaksi_id, Float rating) {
         this.tanggalrequest = tanggalrequest;
         this.namacustomer = namacustomer;
         this.nohp = nohp;
@@ -26,14 +27,15 @@ public class Request implements Serializable {
         this.namapenyediajasa = namapenyediajasa;
         this.tanggalbayar = tanggalbayar;
         this.review = review;
+        this.tanggalmulai = tanggalmulai;
         this.broadcast_id = broadcast_id;
         this.direct_id = direct_id;
         this.hargaperkiraan = hargaperkiraan;
         this.hargatotal = hargatotal;
         this.transaksi_id = transaksi_id;
         this.flagtransaksi = flagtransaksi;
-        this.rating = rating;
         this.tipetransaksi_id = tipetransaksi_id;
+        this.rating = rating;
     }
 
     public String getTanggalrequest() {
@@ -156,6 +158,14 @@ public class Request implements Serializable {
         this.review = review;
     }
 
+    public String getTanggalmulai() {
+        return tanggalmulai;
+    }
+
+    public void setTanggalmulai(String tanggalmulai) {
+        this.tanggalmulai = tanggalmulai;
+    }
+
     public Integer getBroadcast_id() {
         return broadcast_id;
     }
@@ -204,20 +214,20 @@ public class Request implements Serializable {
         this.flagtransaksi = flagtransaksi;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
-
     public Integer getTipetransaksi_id() {
         return tipetransaksi_id;
     }
 
     public void setTipetransaksi_id(Integer tipetransaksi_id) {
         this.tipetransaksi_id = tipetransaksi_id;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public String toString (){

@@ -18,4 +18,7 @@
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_history">History</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_pick_provider">PickProviderActivity</string>
+    <string name="title_activity_unpaid">UnpaidActivity</string>
+    <string name="title_activity_provider_profile">ProviderProfileActivity</string>
 </resources>

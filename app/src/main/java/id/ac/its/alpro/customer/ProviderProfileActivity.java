@@ -10,27 +10,26 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import id.ac.its.alpro.customer.R;
 import id.ac.its.alpro.customer.component.Auth;
 
-public class PaymentActivity extends AppCompatActivity {
+public class ProviderProfileActivity extends AppCompatActivity {
     private String TOKEN;
     private Auth auth;
-    private String ticket;
-    private String status;
+    private String id_penyedia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_provider_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         auth = (Auth) getIntent().getSerializableExtra("Auth");
-        ticket = (String) getIntent().getStringExtra("Ticket");
-
+        id_penyedia = getIntent().getStringExtra("ID_PENYEDIA");
         TOKEN = auth.getToken();
-        String url = "http://128.199.115.34:8080/ecommgateway/payment.html?id="+ticket;
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        String url = "http://servisin.au-syd.mybluemix.net/provider/profil/"+id_penyedia+"/"+TOKEN;
         WebView myWebView = (WebView) findViewById(R.id.web1);
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new MyWebViewClient());
@@ -52,6 +51,4 @@ public class PaymentActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
 }

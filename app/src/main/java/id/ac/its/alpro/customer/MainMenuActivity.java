@@ -49,9 +49,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void ongoingRequest(View view) {
-        Intent i = new Intent(getApplicationContext(),RequestBerlangsungActivity.class);
-        i.putExtra("Auth", auth);
-        startActivity(i);
+
     }
 
     public void unpaidRequest(View view) {
