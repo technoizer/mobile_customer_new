@@ -3,6 +3,7 @@ package id.ac.its.alpro.customer;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -67,7 +68,6 @@ public class PickProviderActivity extends AppCompatActivity {
         lokasi_servis.setText("Lokasi : " + item.getLokasi());
 
         listView = (ListView) findViewById(R.id.listView);
-
         refreshContent();
 
     }
@@ -81,7 +81,9 @@ public class PickProviderActivity extends AppCompatActivity {
     }
 
     public void callProvider(View view) {
-
+        Provider tmp = (Provider) view.getTag();
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tmp.getNohp()));
+        startActivity(intent);
     }
 
     private class AsyncTaskList extends AsyncTask<String, Integer, Double> {

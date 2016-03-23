@@ -128,19 +128,10 @@ public class EcashWalletActivity extends AppCompatActivity {
             }
         });
 
-//        ecash.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(),EcashWalletActivity.class);
-//                i.putExtra("Auth", auth);
-//                startActivity(i);
-//            }
-//        });
-
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),RequestBelumBayarActivity.class);
+                Intent i = new Intent(getApplicationContext(),SettingActivity.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
@@ -158,10 +149,10 @@ public class EcashWalletActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_logout) {
-            new AsyncTaskLogout(this, EcashWalletActivity.this,TOKEN).execute("hehe");
-            Log.d("TOKEN", TOKEN);
-        }
+//        if (id == R.id.action_logout) {
+//            new AsyncTaskLogout(this, EcashWalletActivity.this,TOKEN).execute("hehe");
+//            Log.d("TOKEN", TOKEN);
+//        }
         if (id == R.id.setting){
             final Dialog myDialog = new Dialog(this);
             myDialog.setTitle("Mandiri");

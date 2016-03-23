@@ -121,6 +121,7 @@
                 />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/wrapperPay"
             android:layout_toLeftOf="@+id/wrapper2"
             android:layout_margin="5dp"
             android:layout_width="wrap_content"

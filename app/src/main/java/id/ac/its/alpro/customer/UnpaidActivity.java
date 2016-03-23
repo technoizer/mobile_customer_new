@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -37,6 +40,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import id.ac.its.alpro.customer.component.Auth;
+import id.ac.its.alpro.customer.component.Provider;
 import id.ac.its.alpro.customer.component.Request;
 
 public class UnpaidActivity extends AppCompatActivity {
@@ -45,9 +49,10 @@ public class UnpaidActivity extends AppCompatActivity {
     private Dialog myDialog;
     EditText Review;
     RatingBar Rating;
-    private String TOKEN;
+    private String TOKEN, Mode;
     private Auth auth;
     private Request item;
+    LinearLayout pay;
     TextView namapenyediajasa, tipejasa, jamservis, lokasiservis, perkiraanharga, hargatotal, deskripsi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,7 @@ public class UnpaidActivity extends AppCompatActivity {
         TOKEN = auth.getToken();
 
         item = (Request) getIntent().getSerializableExtra("Request");
-
+        Mode = getIntent().getStringExtra("Mode");
         namapenyediajasa = (TextView)findViewById(R.id.namapenyediajasa);
         tipejasa = (TextView)findViewById(R.id.jenisservis);
         jamservis = (TextView)findViewById(R.id.jamservis);
@@ -70,22 +75,38 @@ public class UnpaidActivity extends AppCompatActivity {
         hargatotal = (TextView)findViewById(R.id.hargatotal);
         perkiraanharga = (TextView)findViewById(R.id.perkiraanharga);
         deskripsi = (TextView)findViewById(R.id.catatanpenyediajasa);
-
+        pay = (LinearLayout)findViewById(R.id.wrapperPay);
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
 
         symbols.setGroupingSeparator('.');
         formatter.setDecimalFormatSymbols(symbols);
-        String temp = formatter.format(item.getHargatotal().longValue());
-        String temp2 = formatter.format(item.getHargaperkiraan().longValue());
 
+        String temp ="";
+        String temp2="";
+        if(!Mode.equals("Sedang Dikerjakan")){
+            temp = formatter.format(item.getHargatotal().longValue());
+        }
+
+        temp2 = formatter.format(item.getHargaperkiraan().longValue());
         namapenyediajasa.setText(item.getNamapenyediajasa());
         tipejasa.setText(item.getTipejasa());
         jamservis.setText(item.getTanggalmulai() +" at " + item.getJamservis());
         lokasiservis.setText("Lokasi : " + item.getLokasi());
-        hargatotal.setText("Harga Total \t\t\t\t: Rp. " + temp + ",-");
         perkiraanharga.setText("Harga Perkiraan \t: Rp. " + temp2 + ",-");
+        hargatotal.setText("Harga Total \t\t\t\t: Rp. " + temp + ",-");
         deskripsi.setText(item.getCatatanpenyediajasa());
+
+        if(Mode.equals("Sedang Dikerjakan")){
+            pay.setVisibility(View.GONE);
+            hargatotal.setText("Harga Total \t\t\t\t: - ");
+            deskripsi.setText("-");
+        }
+    }
+
+    public void callPenyedia(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + item.getNohp()));
+        startActivity(intent);
     }
 
     private class AsyncTaskOTP extends AsyncTask<String, Integer, Double> {

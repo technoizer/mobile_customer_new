@@ -125,29 +125,29 @@ public class History extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),RequestBelumBayarActivity.class);
+                Intent i = new Intent(getApplicationContext(),SettingActivity.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_logout) {
-            new AsyncTaskLogout(this, History.this,TOKEN).execute("hehe");
-            Log.d("TOKEN", TOKEN);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_logout) {
+//            new AsyncTaskLogout(this, History.this,TOKEN).execute("hehe");
+//            Log.d("TOKEN", TOKEN);
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public static class PlaceholderFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "section_number";
@@ -291,13 +291,19 @@ public class History extends AppCompatActivity {
             startActivity(i);
         }
         else if(request.getTanggalselesai() == null){
-            Toast.makeText(getApplicationContext(),"Sedang Dikerjakan",Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(),"Sedang Dikerjakan",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(),UnpaidActivity.class);
+            i.putExtra("Auth", auth);
+            i.putExtra("Request", request);
+            i.putExtra("Mode","Sedang Dikerjakan");
+            startActivity(i);
         }
         else if(request.getTanggalbayar() == null){
 //            Toast.makeText(getApplicationContext(),"Belum Dibayar",Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(),UnpaidActivity.class);
             i.putExtra("Auth", auth);
             i.putExtra("Request", request);
+            i.putExtra("Mode","Belum Bayar");
             startActivity(i);
         }
         else {

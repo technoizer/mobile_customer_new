@@ -2,14 +2,10 @@ package id.ac.its.alpro.customer;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -75,18 +71,16 @@ public class NewRequestActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
     }
 
     public void broadcastRequest(View view) {
-        Intent i = new Intent(getApplicationContext(), newBroadcast.class);
+        Intent i = new Intent(getApplicationContext(), RequestBroadcastActivity.class);
         i.putExtra("Auth", auth);
         startActivity(i);
     }
 
     public void directRequest(View view){
-        Intent i = new Intent(getApplicationContext(), NewDirectActivity.class);
+        Intent i = new Intent(getApplicationContext(), RequestDirectActivity.class);
         i.putExtra("Auth", auth);
         startActivity(i);
     }

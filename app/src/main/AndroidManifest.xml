@@ -60,16 +60,17 @@
             android:label="@string/title_activity_payment"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".newBroadcast"
+            android:name=".RequestBroadcastActivity"
             android:label="@string/title_activity_new_broadcast"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NewDirectActivity"
+            android:name=".RequestDirectActivity"
             android:label="@string/title_activity_new_direct"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingActivity"
-            android:label="@string/title_activity_setting"/>
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"

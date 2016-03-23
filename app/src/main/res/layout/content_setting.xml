@@ -68,6 +68,7 @@
                 android:layout_marginLeft="10dp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/logoutArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"

@@ -9,20 +9,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="id.ac.its.alpro.customer.newBroadcast"
-    tools:showIn="@layout/activity_new_broadcast"
+    tools:context=".RequestBroadcastActivity"
+    tools:showIn="@layout/activity_request_broadcast"
     android:background="@color/backgroundAbu">
-
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </LinearLayout>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/newRequest"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:padding="5dp">
 
         <TextView
@@ -64,11 +53,11 @@
             android:textColor="@color/colorPrimary"/>
 
         <Spinner
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/serviceType"
-            android:spinnerMode="dropdown"
-            style="@android:style/Widget.Holo.Light.Spinner"></Spinner>
+            android:spinnerMode="dropdown"></Spinner>
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,9 +74,8 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/editText"
-            android:layout_marginTop="10dp"
-            android:focusableInTouchMode="false"/>
+            android:id="@+id/lokasi"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,10 +88,12 @@
             android:textColor="@color/colorPrimary"/>
 
         <EditText
+            android:gravity="start|top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
+            android:minLines="2"
             android:id="@+id/catatanKerusakan"
             android:layout_marginTop="10dp"/>
 
@@ -119,7 +109,5 @@
             android:layout_marginRight="3dp"
             android:textColor="@color/cardview_light_background"
             android:layout_marginTop="10dp"/>
-
     </LinearLayout>
-
 </RelativeLayout>
