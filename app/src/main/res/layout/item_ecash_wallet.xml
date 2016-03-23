@@ -44,10 +44,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:layout_marginTop="16dp"
             android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="80.000"
             android:textSize="20sp"/>
     </RelativeLayout>
+    <ImageView
+        android:id="@+id/statusTransfer"
+        android:tint="#0f0"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/left"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
 </RelativeLayout>

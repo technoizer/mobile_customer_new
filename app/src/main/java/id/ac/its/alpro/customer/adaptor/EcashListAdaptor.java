@@ -2,11 +2,15 @@ package id.ac.its.alpro.customer.adaptor;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -48,6 +52,7 @@ public class EcashListAdaptor extends ArrayAdapter<Transaksi> {
         holder.jenis_transaksi = (TextView)row.findViewById(R.id.jenis_transaksi);
         holder.tanggal = (TextView)row.findViewById(R.id.tanggal);
         holder.amount = (TextView)row.findViewById(R.id.amount);
+        holder.status = (ImageView)row.findViewById(R.id.statusTransfer);
         setupItem(holder);
         return row;
     }
@@ -56,7 +61,27 @@ public class EcashListAdaptor extends ArrayAdapter<Transaksi> {
         holder.nama.setText(holder.item.getName());
         holder.jenis_transaksi.setText(holder.item.getTransferType());
         holder.tanggal.setText(holder.item.getTransactionDate());
-        holder.amount.setText(holder.item.getAmount());
+        String old = holder.item.getAmount();
+        String newStr = old.replaceAll("[^0-9]+", "");
+
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+
+        symbols.setGroupingSeparator('.');
+        formatter.setDecimalFormatSymbols(symbols);
+        String temp = formatter.format(Double.parseDouble(newStr)/100);
+
+        holder.amount.setText("Rp. " + temp + ",-");
+
+        if (holder.item.getAmount().indexOf('-') == -1){
+            holder.status.setImageResource(R.drawable.left);
+            holder.status.setColorFilter(Color.argb(255, 0, 255, 0));
+        }
+        else {
+            holder.status.setImageResource(R.drawable.right);
+            holder.status.setColorFilter(Color.argb(255, 255, 0, 0));
+        }
+
     }
 
     public static class NewRequestHolder{
@@ -65,5 +90,6 @@ public class EcashListAdaptor extends ArrayAdapter<Transaksi> {
         TextView nama;
         TextView tanggal;
         TextView amount;
+        ImageView status;
     }
 }
