@@ -15,4 +15,6 @@
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="title_activity_history">History</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_pick_provider">PickProviderActivity</string>
+    <string name="title_activity_unpaid">UnpaidActivity</string>
 </resources>

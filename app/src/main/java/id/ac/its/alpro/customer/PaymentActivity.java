@@ -33,6 +33,7 @@ public class PaymentActivity extends AppCompatActivity {
         String url = "http://128.199.115.34:8080/ecommgateway/payment.html?id="+ticket;
         WebView myWebView = (WebView) findViewById(R.id.web1);
         myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.setWebViewClient(new MyWebViewClient());
         myWebView.loadUrl(url);
         Log.d("URL", url);
     }
@@ -42,6 +43,14 @@ public class PaymentActivity extends AppCompatActivity {
         super.onStop();
 
 
+    }
+
+    public class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
 

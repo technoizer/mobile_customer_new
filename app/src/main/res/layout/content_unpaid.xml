@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="id.ac.its.alpro.customer.UnpaidActivity"
+    tools:showIn="@layout/activity_unpaid">
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Nama Penyedia Jasa"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:id="@+id/namapenyediajasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Servis Mabuk"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:id="@+id/jenisservis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="2016-02-16 at 21:32"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:id="@+id/jamservis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="2dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Lokasi : jl. teleq la"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
+        android:id="@+id/lokasiservis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Perkiraan Harga \t: Rp. 80.000,-"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:id="@+id/perkiraanharga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Harga Total \t\t\t\t: Rp. 80.000.-"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:id="@+id/hargatotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:text="Deskripsi :"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:text="asdasdasdasd\nqweqweqweqweq\n123123"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:id="@+id/catatanpenyediajasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <RelativeLayout
+        android:gravity="bottom|end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/container_atas">
+        <LinearLayout
+            android:id="@+id/wrapper2"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/callButton"
+                android:src="@drawable/phone"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:onClick="callPenyedia"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:textSize="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_toLeftOf="@+id/wrapper2"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/payButton"
+                android:src="@drawable/ecash_icon"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:onClick="payRequest"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Pay"
+                android:textSize="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

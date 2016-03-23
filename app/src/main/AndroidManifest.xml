@@ -28,10 +28,6 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RequestBerlangsungActivity"
-            android:label="@string/title_activity_request_berlangsung"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".RequestBelumBayarActivity"
             android:label="@string/title_activity_request_belum_bayar"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -66,6 +62,15 @@
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PickProviderActivity"
+            android:label="@string/title_activity_pick_provider"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UnpaidActivity"
+            android:label="@string/title_activity_unpaid"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

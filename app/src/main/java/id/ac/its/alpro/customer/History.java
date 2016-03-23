@@ -132,7 +132,6 @@ public class History extends AppCompatActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -285,13 +284,21 @@ public class History extends AppCompatActivity {
     public void historyListener(View view) {
         Request request = (Request) view.getTag();
         if (request.getHargaperkiraan() == null){
-            Toast.makeText(getApplicationContext(),"Belum Diambil",Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(),"Belum Diambil",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(),PickProviderActivity.class);
+            i.putExtra("Auth", auth);
+            i.putExtra("Request", request);
+            startActivity(i);
         }
         else if(request.getHargatotal() == null){
             Toast.makeText(getApplicationContext(),"Sedang Dikerjakan",Toast.LENGTH_LONG).show();
         }
         else if(request.getTanggalbayar() == null){
-            Toast.makeText(getApplicationContext(),"Belum Dibayar",Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(),"Belum Dibayar",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(),UnpaidActivity.class);
+            i.putExtra("Auth", auth);
+            i.putExtra("Request", request);
+            startActivity(i);
         }
         else {
             Toast.makeText(getApplicationContext(),"Selesai",Toast.LENGTH_LONG).show();
