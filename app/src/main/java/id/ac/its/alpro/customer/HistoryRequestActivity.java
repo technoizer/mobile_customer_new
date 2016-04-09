@@ -144,6 +144,7 @@ public class HistoryRequestActivity extends AppCompatActivity {
                 Request request[] = baru.fromJson(reader, Request[].class);
                 for (int i = 0; i < request.length; i++){
                     requestHistory.add(request[i]);
+                    Log.d("requesthistory - >", request[i].toString());
                 }
 
             } catch (ClientProtocolException e) {

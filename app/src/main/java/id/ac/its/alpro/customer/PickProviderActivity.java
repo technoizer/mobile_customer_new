@@ -76,6 +76,7 @@ public class PickProviderActivity extends AppCompatActivity {
         Provider provider = (Provider) view.getTag();
         Intent i = new Intent(getApplicationContext(), ProviderProfileActivity.class);
         i.putExtra("ID_PENYEDIA",provider.getPenyediajasa_id());
+        Log.d("ID-NYA BROO",provider.getPenyediajasa_id());
         i.putExtra("Auth", auth);
         startActivity(i);
     }
