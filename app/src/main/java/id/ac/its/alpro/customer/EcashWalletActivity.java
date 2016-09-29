@@ -88,7 +88,7 @@ public class EcashWalletActivity extends AppCompatActivity {
             refreshContent();
         }
         else {
-            Toast.makeText(this,"Lengkapi data E-Cash Mandiri pada menu setting !",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Lengkapi data E-Cash BRI pada menu setting !",Toast.LENGTH_LONG).show();
         }
 
         ImageButton tmp = (ImageButton) findViewById(R.id.refreshBtn);
@@ -155,7 +155,7 @@ public class EcashWalletActivity extends AppCompatActivity {
 //        }
         if (id == R.id.setting){
             final Dialog myDialog = new Dialog(this);
-            myDialog.setTitle("Mandiri");
+            myDialog.setTitle("BRI");
             myDialog.setContentView(R.layout.dialog_mandiri_setting);
             phone = (EditText)myDialog.findViewById(R.id.phone_number);
             password = (EditText)myDialog.findViewById(R.id.password);
