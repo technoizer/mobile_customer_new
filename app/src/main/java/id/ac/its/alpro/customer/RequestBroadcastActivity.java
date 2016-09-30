@@ -1,13 +1,20 @@
 package id.ac.its.alpro.customer;
 
+import android.*;
+import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -20,6 +27,14 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
@@ -40,7 +55,7 @@ import java.util.ArrayList;
 import id.ac.its.alpro.customer.component.Auth;
 import id.ac.its.alpro.customer.component.Request;
 
-public class RequestBroadcastActivity extends AppCompatActivity {
+public class RequestBroadcastActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     ArrayList<String> tipeJasa = new ArrayList<>();
     ArrayList<String> keyTipe = new ArrayList<>();
     private String TOKEN;
@@ -49,6 +64,24 @@ public class RequestBroadcastActivity extends AppCompatActivity {
     EditText catatanKerusakan, Lokasi;
     String catatan, lokasi, tipe;
 
+    private GoogleApiClient mGoogleApiClient;
+    private android.location.Location mCurrentLocation;
+    private MapFragment mMapFragment;
+    private final int[] MAP_TYPES = {GoogleMap.MAP_TYPE_SATELLITE,
+            GoogleMap.MAP_TYPE_NORMAL,
+            GoogleMap.MAP_TYPE_HYBRID,
+            GoogleMap.MAP_TYPE_TERRAIN,
+            GoogleMap.MAP_TYPE_NONE};
+    private int curMapTypeIndex = 1;
+
+    private static int permission;
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +89,55 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        verifyStoragePermissions(this);
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+
         auth = (Auth) getIntent().getSerializableExtra("Auth");
         TOKEN = auth.getToken();
         serviceType = (Spinner) findViewById(R.id.serviceType);
         Button sendButton = (Button) findViewById(R.id.sendButton);
         catatanKerusakan = (EditText) findViewById(R.id.catatanKerusakan);
         Lokasi = (EditText) findViewById(R.id.lokasi);
+
+        mMapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager().findFragmentById(R.id.fragmentMap);
+        if (mMapFragment == null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mMapFragment = MapFragment.newInstance();
+            fragmentTransaction.replace(R.id.fragmentMap, mMapFragment).commit();
+        }
+
+        if (mMapFragment != null) {
+            mMapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(GoogleMap googleMap) {
+                    GoogleMap mMap = googleMap;
+
+
+                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    mCurrentLocation = LocationServices
+                            .FusedLocationApi
+                            .getLastLocation(mGoogleApiClient);
+
+                    initCamera(mMap, mCurrentLocation);
+                }
+            });
+        }
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +172,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),History.class);
+                Intent i = new Intent(getApplicationContext(), History.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
@@ -106,7 +181,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         ecash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),EcashWalletActivity.class);
+                Intent i = new Intent(getApplicationContext(), EcashWalletActivity.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
@@ -115,13 +190,72 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),SettingActivity.class);
+                Intent i = new Intent(getApplicationContext(), SettingActivity.class);
                 i.putExtra("Auth", auth);
                 startActivity(i);
             }
         });
 
         refreshContent();
+    }
+
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    private void initCamera(GoogleMap gmaps, android.location.Location location) {
+        LatLng pos = new LatLng(-7.279379, 112.796987);
+
+        CameraPosition position = CameraPosition.builder()
+                .target(pos)
+                .zoom(13f)
+                .bearing(0.0f)
+                .tilt(0.0f)
+                .build();
+        gmaps.addMarker(new MarkerOptions().position(pos));
+
+        gmaps.animateCamera(CameraUpdateFactory
+                .newCameraPosition(position), null);
+
+        gmaps.setMapType(MAP_TYPES[curMapTypeIndex]);
+        gmaps.setTrafficEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        gmaps.setMyLocationEnabled(true);
+        gmaps.getUiSettings().setZoomControlsEnabled(true);
     }
 
     private class AsyncTaskList extends AsyncTask<String, Integer, Double> {
@@ -158,7 +292,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/listjenis/0";
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/listjenis/0";
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
@@ -214,6 +348,20 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if( mGoogleApiClient != null && mGoogleApiClient.isConnected() ) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
     private class AsyncTaskPost extends AsyncTask<String, Integer, Double> {
         private ProgressDialog dialog;
         int status;
@@ -254,7 +402,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         public void postData() {
             ArrayList<NameValuePair> postParameters;
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/broadcast/"+TOKEN;
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/broadcast/"+TOKEN;
             HttpPost httpPost = new HttpPost(url);
             Log.d("URL",url);
             postParameters = new ArrayList<NameValuePair>();

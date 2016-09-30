@@ -132,7 +132,7 @@ public class HistoryRequestActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/history/"+TOKEN;
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/history/"+TOKEN;
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 

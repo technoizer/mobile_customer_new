@@ -128,7 +128,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             ArrayList<NameValuePair> postParameters;
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/register";
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/admin/customer/register";
             HttpPost httpPost = new HttpPost(url);
 
             postParameters = new ArrayList<NameValuePair>();

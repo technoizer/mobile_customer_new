@@ -150,7 +150,7 @@ public class UnpaidActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://128.199.115.34:6557/ipg/ticket?amount="+item.getHargatotal()+"&tracenumber=123456"+item.getTransaksi_id()+"&returnurl=http://servisin.au-syd.mybluemix.net/api/customer/request/bayar/"+item.getTransaksi_id()+"/"+TOKEN+"/"+ReviewVal+"/"+RatingVal;
+            String url = "http://128.199.115.34:6557/ipg/ticket?amount="+item.getHargatotal()+"&tracenumber=123456"+item.getTransaksi_id()+"&returnurl=http://ridhoperdana.net/servisin/htdocs/public/api/admin/customer/request/bayar/"+item.getTransaksi_id()+"/"+TOKEN+"/"+ReviewVal+"/"+RatingVal;
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
