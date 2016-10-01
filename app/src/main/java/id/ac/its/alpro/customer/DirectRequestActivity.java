@@ -25,7 +25,7 @@ public class DirectRequestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         auth = (Auth) getIntent().getSerializableExtra("Auth");
         TOKEN = auth.getToken();
-        String url = "http://servisin.au-syd.mybluemix.net/api/mobile/customer/request/direct/" + TOKEN;
+        String url = getResources().getString(R.string.url) + "api/mobile/customer/request/direct/" + TOKEN;
         WebView myWebView = (WebView) findViewById(R.id.web1);
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.loadUrl(url);

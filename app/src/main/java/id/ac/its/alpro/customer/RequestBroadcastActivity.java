@@ -31,8 +31,11 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -158,7 +161,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/listjenis/0";
+            String url = getResources().getString(R.string.url) + "api/customer/request/listjenis/0";
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
@@ -254,7 +257,7 @@ public class RequestBroadcastActivity extends AppCompatActivity {
         public void postData() {
             ArrayList<NameValuePair> postParameters;
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/broadcast/"+TOKEN;
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/broadcast/"+TOKEN;
             HttpPost httpPost = new HttpPost(url);
             Log.d("URL",url);
             postParameters = new ArrayList<NameValuePair>();
@@ -268,6 +271,8 @@ public class RequestBroadcastActivity extends AppCompatActivity {
                 httpPost.setEntity(new UrlEncodedFormEntity(postParameters));
                 HttpResponse response = httpclient.execute(httpPost);
                 status = response.getStatusLine().getStatusCode();
+
+                Log.d("resultApi", EntityUtils.toString(response.getEntity()));
 
             } catch (ClientProtocolException e) {
             } catch (IOException e) {

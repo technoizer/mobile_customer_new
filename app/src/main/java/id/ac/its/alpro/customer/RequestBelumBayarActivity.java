@@ -135,7 +135,7 @@ public class RequestBelumBayarActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/unpaid/"+TOKEN;
+            String url = getResources().getString(R.string.url) + "api/customer/request/unpaid/"+TOKEN;
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
@@ -313,7 +313,7 @@ public class RequestBelumBayarActivity extends AppCompatActivity {
 //                    Log.d("HASIL", res.toString());
 
                     httpclient = new DefaultHttpClient();
-                    url = "http://servisin.au-syd.mybluemix.net/api/customer/request/bayar/"+obj.getTransaksi_id();
+                    url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/bayar/"+obj.getTransaksi_id();
                     httpGet = new HttpGet(url);
                     HttpResponse response = httpclient.execute(httpGet);
 

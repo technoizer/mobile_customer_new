@@ -178,7 +178,7 @@ public class RequestDirectActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/listjenis/0";
+            String url = getResources().getString(R.string.url) + "api/customer/request/listjenis/0";
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 
@@ -283,7 +283,7 @@ public class RequestDirectActivity extends AppCompatActivity {
         public void postData() {
             ArrayList<NameValuePair> postParameters;
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/direct/"+TOKEN;
+            String url = getResources().getString(R.string.url) + "api/customer/request/direct/"+TOKEN;
             HttpPost httpPost = new HttpPost(url);
             Log.d("URL",url);
             postParameters = new ArrayList<NameValuePair>();
@@ -341,7 +341,7 @@ public class RequestDirectActivity extends AppCompatActivity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         public void postData() {
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/customer/request/jenisservis/penyedia/"+tipe;
+            String url = "http://ridhoperdana.net/servisin/htdocs/public/api/customer/request/jenisservis/penyedia/"+tipe;
             HttpGet httpGet = new HttpGet(url);
             Log.d("URL", url);
 

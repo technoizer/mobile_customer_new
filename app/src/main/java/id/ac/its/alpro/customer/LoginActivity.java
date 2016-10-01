@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
 
             ArrayList<NameValuePair> postParameters;
             HttpClient httpclient = new DefaultHttpClient();
-            String url = "http://servisin.au-syd.mybluemix.net/api/admin";
+            String url = getResources().getString(R.string.url) + "api/admin";
             HttpPost httpPost = new HttpPost(url);
 
             postParameters = new ArrayList<NameValuePair>();

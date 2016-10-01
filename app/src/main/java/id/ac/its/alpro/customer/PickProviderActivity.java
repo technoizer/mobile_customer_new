@@ -122,10 +122,10 @@ public class PickProviderActivity extends AppCompatActivity {
             HttpClient httpclient = new DefaultHttpClient();
             String url;
             if (item.getTipetransaksi_id() == 1){
-                url = "http://servisin.au-syd.mybluemix.net/api/customer/request/direct/lihat/"+item.getTransaksi_id();
+                url = getResources().getString(R.string.url) + "api/customer/request/direct/lihat/"+item.getTransaksi_id();
             }
             else{
-                url = "http://servisin.au-syd.mybluemix.net/api/customer/request/broadcast/lihat/"+item.getTransaksi_id();
+                url = getResources().getString(R.string.url) + "api/customer/request/broadcast/lihat/"+item.getTransaksi_id();
             }
 
             HttpGet httpGet = new HttpGet(url);
@@ -221,10 +221,10 @@ public class PickProviderActivity extends AppCompatActivity {
             HttpClient httpclient = new DefaultHttpClient();
             String url;
             if (item.getTipetransaksi_id() == 1){
-                url = "http://servisin.au-syd.mybluemix.net/api/customer/request/direct/pilih/"+item.getTransaksi_id()+"/"+id_penyedia+"/"+TOKEN;
+                url = getResources().getString(R.string.url) + "api/customer/request/direct/pilih/"+item.getTransaksi_id()+"/"+id_penyedia+"/"+TOKEN;
             }
             else{
-                url = "http://servisin.au-syd.mybluemix.net/api/customer/request/broadcast/pilih/"+item.getTransaksi_id()+"/"+id_penyedia+"/"+TOKEN;
+                url = getResources().getString(R.string.url) + "api/customer/request/broadcast/pilih/"+item.getTransaksi_id()+"/"+id_penyedia+"/"+TOKEN;
             }
 
             HttpGet httpGet = new HttpGet(url);

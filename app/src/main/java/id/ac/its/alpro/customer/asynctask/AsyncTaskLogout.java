@@ -18,6 +18,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 
 import id.ac.its.alpro.customer.LoginActivity;
+import id.ac.its.alpro.customer.MainMenuActivity;
+import id.ac.its.alpro.customer.R;
 import id.ac.its.alpro.customer.component.Auth;
 import id.ac.its.alpro.customer.databaseHandler.MySQLiteHelper;
 
@@ -71,7 +73,7 @@ public class AsyncTaskLogout extends AsyncTask<String, Integer, Double> {
     public void postData() {
         //Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        String url = "http://servisin.au-syd.mybluemix.net/api/admin/logout/"+TOKEN;
+        String url = mainActivity.getResources().getString(R.string.url) + "api/admin/logout/"+TOKEN;
         HttpGet httpGet = new HttpGet(url);
         Log.d("URL", url);
 

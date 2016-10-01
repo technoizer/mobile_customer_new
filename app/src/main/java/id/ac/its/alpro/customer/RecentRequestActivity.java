@@ -25,7 +25,7 @@ public class RecentRequestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         auth = (Auth) getIntent().getSerializableExtra("Auth");
         TOKEN = auth.getToken();
-        String url = "http://servisin.au-syd.mybluemix.net/api/mobile/customer/request/" + TOKEN;
+        String url = getResources().getString(R.string.url) + "api/mobile/customer/request/" + TOKEN;
         WebView myWebView = (WebView) findViewById(R.id.web1);
         myWebView.setWebViewClient(new WebViewClient());
         myWebView.loadUrl(url);

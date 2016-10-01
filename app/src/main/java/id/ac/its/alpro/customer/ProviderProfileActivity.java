@@ -29,7 +29,7 @@ public class ProviderProfileActivity extends AppCompatActivity {
         TOKEN = auth.getToken();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        String url = "http://servisin.au-syd.mybluemix.net/provider/profil/"+id_penyedia+"/"+TOKEN;
+        String url = getResources().getString(R.string.url) + "provider/profil/"+id_penyedia+"/"+TOKEN;
         WebView myWebView = (WebView) findViewById(R.id.web1);
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new MyWebViewClient());
